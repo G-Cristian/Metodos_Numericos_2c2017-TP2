@@ -15,20 +15,20 @@ bool ComparadorDeDistancias::operator()(const tipoDistanciaIndiceElemento &d1, c
 	return d1.first > d2.first;
 }
 
-//Los valores de las clases deben estar en el rango [0, maximoValorDeClase).
-Knn::Knn(int k, const vector<tipoElemento> &elementos, const vector<tipoClase> &clasesPorElemento, int maximoValorDeClase) {
-	assert(1 <= k && k <= elementos.size() && elementos.size() == clasesPorElemento.size() && 1 <= maximoValorDeClase);
+//Los valores de las clases deben estar en el rango [0, cantidadDeClases).
+Knn::Knn(int k, const vector<tipoElemento> &elementos, const vector<int> &clasesPorElemento, int cantidadDeClases) {
+	assert(1 <= k && k <= elementos.size() && elementos.size() == clasesPorElemento.size() && 1 <= cantidadDeClases);
 	_k = k;
 	_elementos = elementos;
 	_clasesPorElemento = clasesPorElemento;
-	_maximoValorDeClase = maximoValorDeClase;
+	_cantidadDeClases = cantidadDeClases;
 }
 
 Knn::~Knn() {
 
 }
 
-tipoClase Knn::clasificarElemento(const tipoElemento &elemento) const {
+int Knn::clasificarElemento(const tipoElemento &elemento) const {
 	vector<tipoDistanciaIndiceElemento> distanciasCuadradas = obtenerDistanciasCuadradasConElemento(elemento);
 	vector<int> indicesDeKElementosMasCercanas = obtenerIndicesDeKElementosMasCercanos(distanciasCuadradas);
 
@@ -74,15 +74,15 @@ vector<int> Knn::obtenerIndicesDeKElementosMasCercanos(const vector<tipoDistanci
 	return kElementosMasCercanos;
 }
 
-tipoClase Knn::obtenerClaseDeElementoConMayorFrecuencia(const vector<int> &indicesDeElementos)const {
+int Knn::obtenerClaseDeElementoConMayorFrecuencia(const vector<int> &indicesDeElementos)const {
 	assert(indicesDeElementos.size() > 0);
 	int n = indicesDeElementos.size();
-	vector<int> cantidadDeAparicionesPorClase = vector<int>(_maximoValorDeClase, 0);
-	tipoClase claseConMayorApariciones = tipoClase();
+	vector<int> cantidadDeAparicionesPorClase = vector<int>(_cantidadDeClases, 0);
+	int claseConMayorApariciones = int();
 	int mayorCantidadDeApariciones = -1;
 
 	int indiceDeElementoActual = 0;
-	tipoClase claseActual = tipoClase();
+	int claseActual = int();
 	for (int i = 0; i < n; i++) {
 		indiceDeElementoActual = indicesDeElementos[i];
 		claseActual = _clasesPorElemento[indiceDeElementoActual];
