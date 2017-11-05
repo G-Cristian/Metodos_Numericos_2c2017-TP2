@@ -5,7 +5,7 @@
 #include <exception>
 #include <assert.h>
 #include <iostream>
-
+#include <math.h>
 #include "vector.h"
 #include "MatrizEsparsa.h"
 
@@ -25,6 +25,20 @@ public:
 	}
 private:
 	Matriz<T> _sumando;
+};
+
+
+template<class T> class RestarMatrizFunctor {
+public:
+	RestarMatrizFunctor(const Matriz<T> &restando) :_restando(restando) {
+
+	}
+
+	T operator()(int fila, int columna, T elemento) {
+		return elemento - _restando[fila][columna];
+	}
+private:
+	Matriz<T> _restando;
 };
 
 template<class tipoMatriz, class tipoEscalar> class MultiplicarPorEscalarMatrizFunctor{
@@ -67,6 +81,13 @@ private:
 
 template <class T> class Matriz{
 public:
+
+	Matriz() {
+		_alto = 0;
+		_ancho = 0;
+		_matriz = vector<vector<T> >(_alto, vector<T>(_ancho, T()));
+	}
+	
 	Matriz(int alto, int ancho, T valorInicial){
 		_ancho = ancho;
 		_alto = alto;
@@ -95,7 +116,19 @@ public:
 		this->aplicarFuncAElementos(CopiarElementosDeMatrizEsparsaFunctor<T>(m));
 	}
 
-	Matriz(const Vector3D &vector) {
+	template<class U>
+	Matriz(const vector<U> &v) {
+		_alto = v.size();
+		_ancho = 1;
+
+		_matriz = vector<vector<T> >(_alto, vector<T>(_ancho, T()));
+
+		for (int i = 0; i < _alto; i++) {
+			_matriz[i][0] = (T)v[i];
+		}
+	}
+
+	/*Matriz(const Vector3D &vector) {
 		_ancho = 1;
 		_alto = 3;
 		_matriz = vector<vector<T> >(_alto, vector<T>(_ancho, T()));
@@ -115,19 +148,30 @@ public:
 			_matriz[i][1] = (T)filas[i].y();
 			_matriz[i][2] = (T)filas[i].z();
 		}
-	}
+	}*/
 	
 	~Matriz(){
 	}
-	/*
-	Matriz<T> & operator=(const Matriz<T> &otra) {
+	
+	Matriz(const Matriz<T> &otra) {
 		_alto = otra._alto;
 		_ancho = otra._ancho;
 		_matriz = otra._matriz;
 
-		return *this;
 	}
-	*/
+
+	Matriz(const vector< vector<T> > &v) {
+		_alto = v.size();
+		_ancho = v[0].size();
+		_matriz = vector<vector<T>>(_alto, vector<T>(_ancho, T()));
+		int i = 0;
+		while(i < v.size()){
+			_matriz[i] = v[i];
+			i++;
+		}
+
+	}
+	
 	//operador para castear
 	template<class tipoACastear> operator Matriz<tipoACastear>()const {
 		Matriz<tipoACastear> r = Matriz<tipoACastear>(_alto, _ancho, tipoACastear());
@@ -237,11 +281,11 @@ public:
 		return crearMatrizAPartirDeOtraAplicandoFuncAElementos(*this, MultiplicarPorEscalarMatrizFunctor<T, U>(escalar));
 	}
 
-	/*
-	Matriz<T> operator/(int escalar) const {
+	template <class U>
+	Matriz<T> operator/(U escalar) const {
 		return *this * (1.0/(double)escalar);
 	}
-	
+	/*
 	Matriz<T> operator/(double escalar) const {
 		return *this * (1.0/escalar);
 	}
@@ -289,13 +333,13 @@ public:
 		return r;
 	}
 
-	Matriz<T> & agreagrleAFilaIOtraFila(int filaI, const Matriz<T> &otraFila) {
+	Matriz<T> & agregarleAFilaIOtraFila(int filaI, const Matriz<T> &otraFila) {
 		assert(_ancho == otraFila._ancho && otraFila._alto == 1);
 
-		return agreagrleAFilaIOtraFila(filaI, otraFila[0]);
+		return agregarleAFilaIOtraFila(filaI, otraFila[0]);
 	}
 
-	Matriz<T> & agreagrleAFilaIOtraFila(int filaI, const vector<T> &otraFila) {
+	Matriz<T> & agregarleAFilaIOtraFila(int filaI, const vector<T> &otraFila) {
 		assert(_ancho == otraFila.size());
 		
 		for (int c = 0; c < _ancho; c++) {
@@ -356,6 +400,7 @@ private:
 	int _ancho;
 	int _alto;
 };
+
 
 template<class T> Matriz<T> operator*(int escalar, const Matriz<T> &otra) {
 	return otra * escalar;

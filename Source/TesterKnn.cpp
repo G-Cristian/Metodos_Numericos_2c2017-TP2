@@ -53,17 +53,17 @@ vector<string> TesterKnn::correrTests()const{
 }
 
 bool TesterKnn::testDistanciaCuadradaEntreE1YE2Correcta() const{
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	Knn knn = Knn(1, elementos, vector<int>(1), 4);
 
@@ -72,22 +72,22 @@ bool TesterKnn::testDistanciaCuadradaEntreE1YE2Correcta() const{
 }
 
 bool TesterKnn::testObtenerDistanciasCuadradasConElemento()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	Knn knn = Knn(1, elementos, vector<int>(2), 4);
@@ -102,32 +102,32 @@ bool TesterKnn::testObtenerDistanciasCuadradasConElemento()const {
 }
 
 bool TesterKnn::testObtenerKElementosMasCercanosConKIgualAUnoYLaMenorDistanciaEsConElPrimerElemento()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<int> e4 = vector<int>();
+	vector<double> e4 = vector<double>();
 	e4.push_back(10);
 	e4.push_back(10);
 	e4.push_back(10);
 
-	vector<int> e5 = vector<int>();
+	vector<double> e5 = vector<double>();
 	e5.push_back(9);
 	e5.push_back(9);
 	e5.push_back(9);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	elementos.push_back(e3);
@@ -147,32 +147,32 @@ bool TesterKnn::testObtenerKElementosMasCercanosConKIgualAUnoYLaMenorDistanciaEs
 }
 
 bool TesterKnn::testObtenerKElementosMasCercanosConKIgualAUnoYLaMenorDistanciaEsConElUltimoElemento()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<int> e4 = vector<int>();
+	vector<double> e4 = vector<double>();
 	e4.push_back(10);
 	e4.push_back(10);
 	e4.push_back(10);
 
-	vector<int> e5 = vector<int>();
+	vector<double> e5 = vector<double>();
 	e5.push_back(1);
 	e5.push_back(2);
 	e5.push_back(3);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	elementos.push_back(e3);
@@ -192,32 +192,32 @@ bool TesterKnn::testObtenerKElementosMasCercanosConKIgualAUnoYLaMenorDistanciaEs
 }
 
 bool TesterKnn::testObtenerKElementosMasCercanosConKIgualACantidadDeElementos()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<int> e4 = vector<int>();
+	vector<double> e4 = vector<double>();
 	e4.push_back(10);
 	e4.push_back(10);
 	e4.push_back(10);
 
-	vector<int> e5 = vector<int>();
+	vector<double> e5 = vector<double>();
 	e5.push_back(3);
 	e5.push_back(2);
 	e5.push_back(3);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	elementos.push_back(e3);
@@ -250,32 +250,32 @@ bool TesterKnn::testObtenerKElementosMasCercanosConKIgualACantidadDeElementos()c
 }
 
 bool TesterKnn::testObtenerClaseDeElementoConMayorFrecuenciaConKIgualAUno()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<int> e4 = vector<int>();
+	vector<double> e4 = vector<double>();
 	e4.push_back(10);
 	e4.push_back(10);
 	e4.push_back(10);
 
-	vector<int> e5 = vector<int>();
+	vector<double> e5 = vector<double>();
 	e5.push_back(1);
 	e5.push_back(2);
 	e5.push_back(3);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	elementos.push_back(e3);
@@ -300,32 +300,32 @@ bool TesterKnn::testObtenerClaseDeElementoConMayorFrecuenciaConKIgualAUno()const
 }
 
 bool TesterKnn::testObtenerClaseDeElementoConMayorFrecuenciaConKIgualACantidadDeElementos()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<int> e4 = vector<int>();
+	vector<double> e4 = vector<double>();
 	e4.push_back(10);
 	e4.push_back(10);
 	e4.push_back(10);
 
-	vector<int> e5 = vector<int>();
+	vector<double> e5 = vector<double>();
 	e5.push_back(3);
 	e5.push_back(2);
 	e5.push_back(3);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	elementos.push_back(e3);
@@ -353,32 +353,32 @@ bool TesterKnn::testObtenerClaseDeElementoConMayorFrecuenciaConKIgualACantidadDe
 }
 
 bool TesterKnn::testClasificarElementoConKIgualAUno()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<int> e4 = vector<int>();
+	vector<double> e4 = vector<double>();
 	e4.push_back(10);
 	e4.push_back(10);
 	e4.push_back(10);
 
-	vector<int> e5 = vector<int>();
+	vector<double> e5 = vector<double>();
 	e5.push_back(1);
 	e5.push_back(2);
 	e5.push_back(3);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	elementos.push_back(e3);
@@ -401,32 +401,32 @@ bool TesterKnn::testClasificarElementoConKIgualAUno()const {
 }
 
 bool TesterKnn::testClasificarElementoConKIgualACantidadDeElementos()const {
-	vector<int> e1 = vector<int>();
+	vector<double> e1 = vector<double>();
 	e1.push_back(1);
 	e1.push_back(2);
 	e1.push_back(3);
 
-	vector<int> e2 = vector<int>();
+	vector<double> e2 = vector<double>();
 	e2.push_back(3);
 	e2.push_back(1);
 	e2.push_back(4);
 
-	vector<int> e3 = vector<int>();
+	vector<double> e3 = vector<double>();
 	e3.push_back(2);
 	e3.push_back(2);
 	e3.push_back(4);
 
-	vector<int> e4 = vector<int>();
+	vector<double> e4 = vector<double>();
 	e4.push_back(10);
 	e4.push_back(10);
 	e4.push_back(10);
 
-	vector<int> e5 = vector<int>();
+	vector<double> e5 = vector<double>();
 	e5.push_back(3);
 	e5.push_back(2);
 	e5.push_back(3);
 
-	vector<vector<int> > elementos = vector<vector<int> >();
+	vector<vector<double> > elementos = vector<vector<double> >();
 	elementos.push_back(e1);
 	elementos.push_back(e2);
 	elementos.push_back(e3);

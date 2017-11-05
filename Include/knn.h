@@ -8,7 +8,7 @@
 
 using namespace std;
 
-typedef vector<int> tipoElemento;
+typedef vector<double> tipoElemento;
 typedef pair<double, int> tipoDistanciaIndiceElemento;
 
 class ComparadorDeDistancias {
